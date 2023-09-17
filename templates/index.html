@@ -2,13 +2,14 @@
 <html>
 
 <head>
-  <title>Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ludci Ai</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 
-  </style>
 </head>
 
 <body style="background-color: #faf5ea">
@@ -16,145 +17,47 @@
   <nav class="navbar navbar-expand-sm mx-4 fixed-top" style="background-color: #faf5ea">
     <div class="container-fluid">
       <a class="navbar-brand" href="javascript:void(0)">
-        <img src="{{ url_for('static', filename='images/nav-icon1.png') }}" alt="Avatar Logo" height="55px"
-          style="width: 60px" class="rounded-pill" />
+        <img src="/static/images/nav-icon1.png" alt="Avatar Logo" height="55px" style="width: 60px"
+          class="rounded-pill" />
       </a>
 
-      <img src="{{ url_for('static', filename='images/nav-icon2.png') }}" alt="Avatar Logo" height="55px"
-        style="width: 60px" class="rounded-pill" />
+      <img src="/static/images/nav-icon2.png" alt="Avatar Logo" height="55px" style="width: 60px"
+        class="rounded-pill" />
     </div>
   </nav>
   <!-- end of nav -->
 
   <br /><br /><br /><br /><br />
 
-  <!-- chat container -->
-  <div class="container px-4">
-    <div class="mx-auto px-4" style="max-width: 550px;">
-
-      <!--Default Ai chat message-->
-      <div class="d-flex flex-row justify-content-start">
-        <img class="rounded-circle"
-          src="https://static.vecteezy.com/system/resources/previews/010/054/157/original/chat-bot-robot-avatar-in-circle-round-shape-isolated-on-white-background-stock-illustration-ai-technology-futuristic-helper-communication-conversation-concept-in-flat-style-vector.jpg"
-          alt="avatar 1" style="width: 45px; height: 100%;">
-        <div>
-          <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #faf5ea;font-size:20px;">
-            Hey there, great to meet you. I’m Pi, your personal AI.
-            My goal is to be useful, friendly and fun. Ask me for advice, for answers, or let’s talk about whatever’s on
-            your mind.
-            What do you like to do in your free time?
-          </p>
-          <p class="small ms-3 mb-3 rounded-3 text-muted">23:58</p>
-        </div>
-      </div>
-      <!--end of default Ai chat message-->
-
-      <div id="chat-box">
-        <!-- Chat messages will be added here dynamically using JavaScript -->
-      </div>
-
-      <div id="ai-chat-box"></div>
-
-
-    </div>
-
-  </div>
-  <!-- end of chat container -->
-
-  <br /><br />
 
   <!-- navbar fixed bottom -->
-  <div class="mx-auto px-4 fixed-bottom" style="max-width: 550px;">
+  <div class="mx-auto px-4 fixed-bottom"">
 
-    <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
-      <div class="input-group shadow p-2 bg-white"
-        style="border-radius: 25px;width:100%; background-color: white; display: flex;align-items: center;justify-content: space-between;">
-        <input id="user-input" type="text" class="" placeholder="Talk with Ludci"
-          style="height: 30px; padding-left: 40px; width:80%;border: 0; outline: 0;" />
-        <span id="send-button" style=" background-color: lightgray;" class="rounded-circle px-2 py-1"><i
-            class="fa fa-paper-plane" aria-hidden="true"></i></span>
+    <div id="chat-container">
+      <br /><br /><br /><br />
+      <div id="display-area"></div>
+      <div class="input-container" style="border-radius: 25px;background-color: white; display: flex;align-items: center;justify-content: space-between;">
+          <input id="input-text" type="text" class="input-text" placeholder="Talk with Ludci"
+              style="height: 30px; padding-left: 40px; width:80%;border: 0; outline: 0;" />
+          <span id="send-button" style=" background-color: #F5EEDF;" class="rounded-circle px-2 py-1 send-button"><i
+              class="fa fa-arrow-up" aria-hidden="true" style="color:#CEC9C8" ; onclick="displayText()"></i>
+          </span>
       </div>
+      
 
-      <a class="ms-3" href="#!"><b-icon-chat-text-fill></b-icon-chat-text-fill></a>
-    </div>
+  </div>
+  <p align="center" class="text-muted" style="font-size:12px;"><small><b>By messaging Ludci, you are agreeing to our
+        <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</b></small></p>
 
   </div>
   <!--end of fixed boottom-->
-
-
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
     crossorigin="anonymous"></script>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 </body>
-
-<script>
-  const chatBox = document.getElementById('chat-box');
-  const aichatbox = document.getElementById('ai-chat-box');
-  const userInput = document.getElementById('user-input');
-  const sendButton = document.getElementById('send-button');
-
-  sendButton.addEventListener('click', () => {
-    const message = userInput.value.trim();
-    if (message !== '') {
-      addUserMessage(message);
-      userInput.value = '';
-
-      setTimeout(() => {
-        addReceiverMessage();
-      }, 1000);
-
-    }
-  });
-
-  function addUserMessage(message) {
-    const chatMessageDiv = document.createElement('div');
-    chatMessageDiv.innerHTML = `
-    <div class="d-flex flex-row justify-content-end">
-      <img class="rounded-circle"
-        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
-        alt="avatar 1" style="width: 45px; height: 100%;">
-      <div>
-        <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #faf5ea;font-size:20px;">
-          ${message}
-        </p>
-        <p class="small ms-3 mb-3 rounded-3 text-muted">23:58</p>
-      </div>
-      </div>
-    `;
-    chatBox.appendChild(document.createElement('br'));
-    chatBox.appendChild(chatMessageDiv);
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-  }
-
-function addReceiverMessage(){
-
-  const aichatMessageDiv = document.createElement('div');
-  aichatMessageDiv.innerHTML = `
-    <div class="d-flex flex-row justify-content-start">
-      <img class="rounded-circle"
-        src="https://static.vecteezy.com/system/resources/previews/010/054/157/original/chat-bot-robot-avatar-in-circle-round-shape-isolated-on-white-background-stock-illustration-ai-technology-futuristic-helper-communication-conversation-concept-in-flat-style-vector.jpg"
-        alt="avatar 1" style="width: 45px; height: 100%;">
-      <div>
-        <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #faf5ea;font-size:20px;">
-          Hey there, great to meet you. I’m Pi, your personal AI.
-          My goal is to be useful, friendly and fun. Ask me for advice, for answers, or let’s talk about whatever’s on
-          your mind.
-          What do you like to do in your free time?
-        </p>
-        <p class="small ms-3 mb-3 rounded-3 text-muted">23:58</p>
-      </div>
-      </div>
-    `;
-    aichatbox.appendChild(document.createElement('br'));
-    aichatbox.appendChild(aichatMessageDiv);
-    aichatbox.scrollTop = chatBox.scrollHeight;
-
-}
-
-</script>
-
 
 
 

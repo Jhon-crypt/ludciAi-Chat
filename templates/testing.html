@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WhatsApp-Like Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        #chat-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 800px;
+            margin: 0 auto 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            height: 100%;
+        }
+
+        #display-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column; /* Reverse the order of messages */
+            gap: 10px;
+            margin-bottom: 100px;
+            /* Add scrollbar when content overflows */
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px; /* Center the messages horizontally */
+            
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background-color: #DCF8C6;
+
+        }
+
+        .other-message {
+            align-self: flex-start;
+            background-color: transparent;
+            font-size: 20px;
+        }
+
+        .fade-up-text {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .input-container {
+            display: flex;
+            align-items: center; /* Center vertically */
+            gap: 10px;
+            background-color: white;
+            padding: 10px;
+            
+            
+            
+            box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #input-text {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+             /* Make the input narrower */
+        }
+
+        #send-button {
+            background-color: #0084ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            /* Make the send button narrower */
+        }
+        .input-text:focus + .send-button {
+            background-color: blue !important;
+        }
+    </style>
+</head>
+<body style="background-color: #faf5ea">
+    <!-- Fixed to navbar -->
+  <nav class="navbar navbar-expand-sm mx-4 fixed-top" style="background-color: #faf5ea">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="javascript:void(0)">
+        <img src="/static/images/nav-icon1.png" alt="Avatar Logo" height="55px"
+          style="width: 60px" class="rounded-pill" />
+      </a>
+
+      <img src="/static/images/nav-icon2.png" alt="Avatar Logo" height="55px"
+        style="width: 60px" class="rounded-pill" />
+    </div>
+  </nav>
+  <!-- end of nav -->
+
+  <br /><br /><br /><br /><br />
+
+
+
+
+      <!-- navbar fixed bottom -->
+  <div class="mx-auto px-4 fixed-bottom"">
+
+    <div id="chat-container">
+        <br /><br /><br /><br />
+        <div id="display-area"></div>
+        <div class="input-container" style="border-radius: 25px;background-color: white; display: flex;align-items: center;justify-content: space-between;">
+            <input id="input-text" type="text" class="input-text" placeholder="Talk with Ludci"
+                style="height: 30px; padding-left: 40px; width:80%;border: 0; outline: 0;" />
+            <span id="send-button" style=" background-color: #F5EEDF;" class="rounded-circle px-2 py-1 send-button"><i
+                class="fa fa-arrow-up" aria-hidden="true" style="color:#CEC9C8" ; onclick="displayText()"></i>
+            </span>
+        </div>
+        
+
+    </div>
+    <p align="center" class="text-muted" style="font-size:12px;"><small><b>By messaging Ludci, you are agreeing to our
+          <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</b></small></p>
+
+  </div>
+  <!--end of fixed boottom-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+    </body>
+
+    <script>
+        function displayText() {
+            const inputText = document.getElementById('input-text').value;
+            const displayArea = document.getElementById('display-area');
+    
+            if (inputText.trim() === '') {
+                return; // Don't add empty messages
+            }
+    
+            // Create a new message element
+            const newMessageElement = document.createElement('div');
+            newMessageElement.textContent = inputText;
+            newMessageElement.classList.add('message', 'fade-up-text', 'user-message');
+    
+            // Clear the input field
+            document.getElementById('input-text').value = '';
+    
+            // Apply fade-in animation to the new message element
+            setTimeout(function () {
+                newMessageElement.style.opacity = 1;
+            }, 100); // 0.1-second delay for immediate fade-in
+    
+            // Append the new message element to the display area
+            displayArea.appendChild(newMessageElement);
+    
+            // Remove old user messages if there are more than 2
+            const userMessages = document.querySelectorAll('.user-message');
+            if (userMessages.length > 1) {
+                displayArea.removeChild(userMessages[0]);
+            }
+    
+            // Set a default message to appear after the user sends a message
+            setTimeout(function () {
+                const defaultTextElement = document.createElement('div');
+                defaultTextElement.textContent = "Hahaha, now you're just messing with me! 🤣 You went from 'hi' to 'hi' to random letters to 'hello'! 🤪 Are you just seeing how far you can push my AI conversational skills? 😜";
+                defaultTextElement.classList.add('message', 'fade-up-text', 'other-message');
+                displayArea.appendChild(defaultTextElement);
+    
+                // Remove old other messages if there are more than 2
+                const otherMessages = document.querySelectorAll('.other-message');
+                if (otherMessages.length > 1) {
+                    displayArea.removeChild(otherMessages[0]);
+                }
+    
+                setTimeout(function () {
+                    defaultTextElement.style.opacity = 1;
+                }, 100); // 0.1-second delay for immediate fade-in of default message
+            }, 1000); // 1-second delay after the user sends a message
+        }
+    </script>
+    
+
+</html>
