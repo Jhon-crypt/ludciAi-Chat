@@ -11,17 +11,18 @@ function displayText() {
     }
 
     // Create a new message element
-    const newMessageElement = document.createElement('div');
+    const newMessageElement = document.querySelector('.user-message');
     newMessageElement.textContent = inputText;
-    newMessageElement.classList.add('flex', 'fade-up-text', 'user-message', 'justify-end', 'py-1', 'space-y-1', 'break-words', 'rounded-[10px]', 'bg-cream-600', 'p-3', 'ml-auto', 'w-fit', 'mb-3');
+    newMessageElement.classList.add('fade-in','flex', 'fade-up-text', 'user-message', 'justify-end', 'py-1', 'space-y-1', 'break-words', 'rounded-[10px]', 'bg-cream-600', 'p-3', 'ml-auto', 'w-fit', 'mb-3');
 
     // Clear the input field
     document.getElementById('input-text').value = '';
 
     // Apply fade-in animation to the new message element
     setTimeout(function () {
-        newMessageElement.style.opacity = 1;
-    }, 10); // 0.1-second delay for immediate fade-in
+        newMessageElement.classList.add('fade-in');
+    }, 0.1); // 0.1-second delay for immediate fade-in
+
 
     // Append the new message element to the display area
     displayArea.appendChild(newMessageElement);
@@ -44,7 +45,7 @@ function displayText() {
 
 
         // Function to wrap every 6 words in a <p> tag
-        function wrapWordsInPTags(text, wordsPerParagraph = 6) {
+        function wrapWordsInPTags(text, wordsPerParagraph = 2) {
             // Split the text into words
             const words = text.split(/\s+/);
 
@@ -71,13 +72,14 @@ function displayText() {
         const inputText = "Hahaha! 😆 Now you're just being silly. 😜 I know you're capable of more than just hi! 😝 Come on, let's chat about something a bit more substantial! 😄 I promise I'll be an excellent conversationalist! 😁";
         const { wrappedHTML, spanCount } = wrapWordsInPTags(inputText);
         console.log(wrappedHTML);
+        console.log(spanCount)
 
         // Assuming you have the spanCount value from the previous code
 
 
         // Define the CSS animation properties
-        const animationDuration = '0.7s';
-        const animationDelayBase = '0.1s';
+        const animationDuration = '0.9s';
+        const animationDelayBase = '0.2s';
         const animationTimingFunction = 'cubic-bezier(0.11, 0, 0.5, 0)';
         const animationName = 'fade-in-word';
 
@@ -85,10 +87,9 @@ function displayText() {
         for (let i = 0; i < spanCount; i++) {
             const animationDelay = `${parseFloat(animationDelayBase) * i}s`;
             const cssRule = `
-span:nth-child(${i + 1}) {
-animation: ${animationName} ${animationDuration} ${animationDelay} forwards ${animationTimingFunction};
-}
-`;
+            span:nth-child(${i + 1}) {
+                animation: ${animationName} ${animationDuration} ${animationDelay} forwards ${animationTimingFunction};
+            }`;
 
             // Create a <style> element and append it to the <head>
             const styleElement = document.createElement('style');
@@ -100,8 +101,11 @@ animation: ${animationName} ${animationDuration} ${animationDelay} forwards ${an
 
         defaultTextElement.innerHTML = wrappedHTML;
 
-        defaultTextElement.classList.add('other-message', 'sentence');
-        displayArea.appendChild(defaultTextElement);
+        defaultTextElement.classList.add('other-message', 'sentence', 'mb-10');
+
+        
+
+        
 
         // Get all sentence elements
         const sentences = document.querySelectorAll('.ai-message');
@@ -119,6 +123,13 @@ animation: ${animationName} ${animationDuration} ${animationDelay} forwards ${an
         animateSentences()
 
 
+        setTimeout(function () {
+            defaultTextElement.classList.add('fadeotherIn');
+            
+        },5); // 0.1-second delay for immediate fade-in of default message
+
+        displayArea.appendChild(defaultTextElement);
+
         // Remove old other messages if there are more than 2
         const otherMessages = document.querySelectorAll('.other-message');
         if (otherMessages.length > 1) {
@@ -130,12 +141,7 @@ animation: ${animationName} ${animationDuration} ${animationDelay} forwards ${an
             //displayArea.removeChild(otherMessages[0]);
         }
 
-
-
-        setTimeout(function () {
-            defaultTextElement.style.opacity = 1;
-        }, 10); // 0.1-second delay for immediate fade-in of default message
-    }, 10); // 1-second delay after the user sends a message
+    }, 0.1); // 1-second delay after the user sends a message
 
 }
 
@@ -182,69 +188,69 @@ window.addEventListener('load', scrollToTarget);
 ///////////////////////////////////////////////////
 /*
 function displayText() {
-    const inputText = document.getElementById('input-text').value;
-    const displayArea = document.getElementById('display-area');
+const inputText = document.getElementById('input-text').value;
+const displayArea = document.getElementById('display-area');
 
-    if (inputText.trim() === '') {
-        return; // Don't add empty messages
+if (inputText.trim() === '') {
+    return; // Don't add empty messages
+}
+
+// Create a new message element for the user's input
+
+const userMessageElement = document.createElement('div');
+userMessageElement.textContent = inputText;
+userMessageElement.classList.add('message', 'fade-up-text', 'user-message');
+
+// Clear the input field
+document.getElementById('input-text').value = '';
+
+// Apply fade-in animation to the new user message element
+setTimeout(function () {
+    userMessageElement.style.opacity = 1;
+}, 100); // 0.1-second delay for immediate fade-in
+
+// Append the user's message element to the display area
+displayArea.appendChild(userMessageElement);
+
+// Remove old user messages if there are more than 2
+const userMessages = document.querySelectorAll('.user-message');
+if (userMessages.length > 1) {
+    displayArea.removeChild(userMessages[0]);
+}
+
+// Send the user's message to the server and handle the response
+fetch('/api/endpoint', { // Replace with your server's API endpoint
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ message: inputText }),
+})
+.then(response => response.json())
+.then(data => {
+    // Create a new message element for the server's response
+    const serverMessageElement = document.createElement('div');
+    serverMessageElement.textContent = data.response; // Assuming the server returns a "response" field
+    serverMessageElement.classList.add('message', 'fade-up-text', 'other-message');
+    
+    // Append the server's response message element to the display area
+    displayArea.appendChild(serverMessageElement);
+
+    // Remove old other messages if there are more than 2
+    const otherMessages = document.querySelectorAll('.other-message');
+    if (otherMessages.length > 1) {
+        displayArea.removeChild(otherMessages[0]);
     }
 
-    // Create a new message element for the user's input
-    
-    const userMessageElement = document.createElement('div');
-    userMessageElement.textContent = inputText;
-    userMessageElement.classList.add('message', 'fade-up-text', 'user-message');
-
-    // Clear the input field
-    document.getElementById('input-text').value = '';
-
-    // Apply fade-in animation to the new user message element
+    // Apply fade-in animation to the new server response message element
     setTimeout(function () {
-        userMessageElement.style.opacity = 1;
-    }, 100); // 0.1-second delay for immediate fade-in
+        serverMessageElement.style.opacity = 1;
+    }, 100); // 0.1-second delay for immediate fade-in of server response message
+})
+.catch(error => {
+    console.error('Error:', error);
+    // Handle errors from the API request here
+});
 
-    // Append the user's message element to the display area
-    displayArea.appendChild(userMessageElement);
-
-    // Remove old user messages if there are more than 2
-    const userMessages = document.querySelectorAll('.user-message');
-    if (userMessages.length > 1) {
-        displayArea.removeChild(userMessages[0]);
-    }
-
-    // Send the user's message to the server and handle the response
-    fetch('/api/endpoint', { // Replace with your server's API endpoint
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message: inputText }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Create a new message element for the server's response
-        const serverMessageElement = document.createElement('div');
-        serverMessageElement.textContent = data.response; // Assuming the server returns a "response" field
-        serverMessageElement.classList.add('message', 'fade-up-text', 'other-message');
-        
-        // Append the server's response message element to the display area
-        displayArea.appendChild(serverMessageElement);
-
-        // Remove old other messages if there are more than 2
-        const otherMessages = document.querySelectorAll('.other-message');
-        if (otherMessages.length > 1) {
-            displayArea.removeChild(otherMessages[0]);
-        }
-
-        // Apply fade-in animation to the new server response message element
-        setTimeout(function () {
-            serverMessageElement.style.opacity = 1;
-        }, 100); // 0.1-second delay for immediate fade-in of server response message
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        // Handle errors from the API request here
-    });
-    
 }
 */

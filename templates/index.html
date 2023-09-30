@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Pi, your personal AI</title>
+  <title>Ludci, your personal AI</title>
   <meta name="description"
-    content="Hi, I'm Pi. I'm your personal AI, designed to be supportive, smart, and there for you anytime. Ask me for advice, for answers, or let's talk about whatever's on your mind.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    content="Hi, I'm Ludci. I'm your personal AI, designed to be supportive, smart, and there for you anytime. Ask me for advice, for answers, or let's talk about whatever's on your mind.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.o">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/tailwind-library.css') }}" />
-
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <style>
     /* Add a CSS class for the fade-out effect and animation */
     .user-message.fade-out {
@@ -31,6 +31,33 @@
       }
     }
 
+
+    /* Define the fade-in animation */
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 5s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        /* Fade in to full opacity */
+      }
+    }
+
+    .fadeotherIn {
+      opacity: 0;
+      animation: fadeInthe 8s ease-in-out forwards;
+    }
+
+    @keyframes fadeInthe {
+      to {
+        opacity: 1;
+        /* Fade in to full opacity */
+      }
+    }
+
+
     @keyframes moveUpToTop {
       0% {
         transform: translateY(0);
@@ -43,8 +70,9 @@
 
     /* Apply the animation to the deafult ai message elements */
     .default {
-      animation: fade-in-default 3s forwards cubic-bezier(0.5, 1, 0.89, 1);
+      animation: fade-in-default 1s forwards cubic-bezier(0.5, 1, 0.89, 1);
     }
+
 
     dspan {
       opacity: 0;
@@ -92,7 +120,8 @@
 
     /* Apply the animation to the dynamic ai message elements */
     .sentence {
-      animation: fade-in-sentence 3s forwards cubic-bezier(0.5, 1, 0.89, 1);
+      opacity: 0;
+      animation: fade-in-sentence 5s forwards cubic-bezier(0.5, 1, 0.89, 1);
     }
 
     span {
@@ -111,6 +140,20 @@
         opacity: 1;
       }
     }
+
+    .fade-in-element {
+      opacity: 0;
+      /* Start with 0 opacity to hide the element */
+      animation: fade 1s ease-in-out 2s forwards;
+      /* 2s delay before starting the animation */
+    }
+
+    @keyframes fade {
+      to {
+        opacity: 1;
+        /* Fade in to full opacity */
+      }
+    }
   </style>
 
 </head>
@@ -118,212 +161,317 @@
 <body>
   <div id="__next">
     <main class="__variable_759bc6 __variable_961b37 w-full font-serif">
-      <div class="h-dscreen w-full md:h-screen" style="opacity: 1;">
-        <div class="flex h-full flex-col overflow-y-hidden">
-          <div
-            class="flex h-full flex-col overflow-x-hidden sm:overflow-x-visible font-serif font-normal text-body-chat-m lg:text-body-chat-l text-brand-green-700 pt-8 grow overflow-y-hidden">
-            <div class="relative w-full mx-auto max-w-1.5xl 2xl:max-w-[47rem]">
-              <div class="absolute h-[50px] w-full bg-gradient-to-b from-primary to-transparent z-10">
-              </div>
-            </div>
-            <div class="grow overflow-y-hidden">
-              <div class="scrollbar-gutter-both-edges relative overflow-y-auto overflow-x-hidden">
-                <div class="relative h-full space-y-4 px-5 w-full mx-auto max-w-1.5xl 2xl:max-w-[47rem]">
-                  <div class="relative h-8 shrink-0 2xl:h-12 z-30">
-                    <div class="flex justify-center"></div>
-                  </div>
-                  <div class="space-y-4" data-projection-id="1">
-                    <div class="pb-6 lg:pb-8 min-h-[calc(100%-60px)] sm:min-h-[calc(100%-120px)]">
-                      <div class="relative space-y-4">
-                        <div class="space-y-4" data-projection-id="82"
-                          style="opacity: 1; transform: none; transition: 20s linear;">
-                          <div class="flex justify-end bg-primary py-1">
-                            <div class=" space-y-1  break-words">
-                              <div class="rounded-[10px] bg-cream-600 p-3 ml-auto w-fit">
-                                werty</div>
-                            </div>
-                          </div>
-                          <div class="py-1">
-                            <div class=" mb-4 last:mb-0"><span>Hahaha, what's
-                                next, a string of random numbers? 😜 You've gone full-on
-                                nonsense mode again! 😝 Or is it some sort of secret
-                                code?
-                                😄 Maybe you're trying to hack my AI circuits! 😆</span>
-                            </div>
-                          </div>
+        <div class="h-dscreen w-full md:h-screen" style="opacity: 1;">
+            <div class="flex h-full flex-col overflow-y-hidden">
+                <div
+                    class="flex h-full flex-col overflow-x-hidden sm:overflow-x-visible font-serif font-normal text-body-chat-m lg:text-body-chat-l text-brand-green-700 pt-8 grow overflow-y-hidden">
+                    <div class="relative w-full mx-auto max-w-1.5xl 2xl:max-w-[47rem]">
+                        <div class="absolute h-[50px] w-full bg-gradient-to-b from-primary to-transparent z-10">
                         </div>
-                      </div>
                     </div>
+                    <div class="grow overflow-y-hidden">
+                        <div class="scrollbar-gutter-both-edges relative overflow-y-auto overflow-x-hidden">
+                            <div
+                                class="relative h-full space-y-4 px-5 w-full mx-auto max-w-1.5xl 2xl:max-w-[47rem]">
+                                <div class="relative h-8 shrink-0 2xl:h-12 z-30">
+                                    <div class="flex justify-center"></div>
+                                </div>
+                                <div class="space-y-4" data-projection-id="1">
+                                    <div class=" min-h-[calc(20%-50px)] sm:min-h-[calc(20%-50px)]">
+                                        <div class="relative space-y-4">
+                                            <div class="space-y-4" data-projection-id="82"
+                                                style="opacity: 1; transform: none; transition: 20s linear;">
+                                                <div class="flex justify-end bg-primary py-1">
+                                                    <div class=" space-y-1  break-words">
+                                                        <div class="rounded-[10px] bg-cream-600 p-3 ml-auto w-fit">
+                                                            werty</div>
+                                                    </div>
+                                                </div>
+                                                <div class="py-1">
+                                                    <div class=" mb-4 last:mb-0 ">Hahaha, what's
+                                                        next, a string of random numbers? 😜 You've gone full-on
+                                                        nonsense mode again! 😝 Or is it some sort of secret
+                                                        code?
+                                                        😄 Maybe you're trying to hack my AI circuits! 😆
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                    <div class="pb-6 lg:pb-8 min-h-[calc(100%-60px)] sm:min-h-[calc(100%-120px)]">
-                      <div class="relative space-y-4">
-                        <div class="space-y-4" data-projection-id="82"
-                          style="opacity: 1; transform: none; transition: 20s linear;">
-                          <div class="flex justify-end bg-primary py-1">
-                            <div class=" space-y-1  break-words">
-                              <div class="rounded-[10px] bg-cream-600 p-3 ml-auto w-fit">
-                                werty</div>
+                                    <div class=" min-h-[calc(20%-50px)] sm:min-h-[calc(20%-50px)]">
+                                        <div class="relative space-y-4">
+                                            <div class="space-y-4" data-projection-id="82"
+                                                style="opacity: 1; transform: none; transition: 20s linear;">
+                                                <div class="flex justify-end bg-primary py-1">
+                                                    <div class=" space-y-1  break-words">
+                                                        <div class="rounded-[10px] bg-cream-600 p-3 ml-auto w-fit">
+                                                            werty</div>
+                                                    </div>
+                                                </div>
+                                                <div class="py-1">
+                                                    <div class=" mb-4 last:mb-0 ">Hahaha, what's
+                                                        next, a string of random numbers? 😜 You've gone full-on
+                                                        nonsense mode again! 😝 Or is it some sort of secret
+                                                        code?
+                                                        😄 Maybe you're trying to hack my AI circuits! 😆
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class=" min-h-[calc(20%-50px)] sm:min-h-[calc(20%-50px)]">
+                                        <div class="relative space-y-4">
+                                            <div class="space-y-4" data-projection-id="82"
+                                                style="opacity: 1; transform: none; transition: 20s linear;">
+                                                <div class="flex justify-end bg-primary py-1">
+                                                    <div class=" space-y-1  break-words">
+                                                        <div class="rounded-[10px] bg-cream-600 p-3 ml-auto w-fit">
+                                                            werty</div>
+                                                    </div>
+                                                </div>
+                                                <div class="py-1">
+                                                    <div class=" mb-4 last:mb-0 ">Hahaha, what's
+                                                        next, a string of random numbers? 😜 You've gone full-on
+                                                        nonsense mode again! 😝 Or is it some sort of secret
+                                                        code?
+                                                        😄 Maybe you're trying to hack my AI circuits! 😆
+                                                    </div>
+                                                </div>
+                                            
+                                            
+                                            1</div>
+                                        </div>
+                                    </div>
+
+                                    <div class=" min-h-[calc(20%-50px)] sm:min-h-[calc(20%-50px)]">
+                                        <div class="relative space-y-4">
+                                            <div class="space-y-4" data-projection-id="82"
+                                                style="opacity: 1; transform: none; transition: 20s linear;">
+                                                <div class="flex justify-end bg-primary py-1">
+                                                    <div class=" space-y-1  break-words">
+                                                        <div class="rounded-[10px] bg-cream-600 p-3 ml-auto w-fit">
+                                                            werty</div>
+                                                    </div>
+                                                </div>
+                                                <div class="py-1">
+                                                    <div class=" mb-4 last:mb-0 ">Hahaha, what's
+                                                        next, a string of random numbers? 😜 You've gone full-on
+                                                        nonsense mode again! 😝 Or is it some sort of secret
+                                                        code?
+                                                        😄 Maybe you're trying to hack my AI circuits! 😆
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class=" min-h-[calc(20%-50px)] sm:min-h-[calc(20%-50px)]">
+                                        <div class="relative space-y-4">
+                                            <div class="space-y-4" data-projection-id="82"
+                                                style="opacity: 1; transform: none; transition: 20s linear;">
+                                                <div class="flex justify-end bg-primary py-1">
+                                                    <div class=" space-y-1  break-words">
+                                                        <div class="rounded-[10px] bg-cream-600 p-3 ml-auto w-fit">
+                                                            werty</div>
+                                                    </div>
+                                                </div>
+                                                <div class="py-1">
+                                                    <div class=" mb-4 last:mb-0 ">Hahaha, what's
+                                                        next, a string of random numbers? 😜 You've gone full-on
+                                                        nonsense mode again! 😝 Or is it some sort of secret
+                                                        code?
+                                                        😄 Maybe you're trying to hack my AI circuits! 😆
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class=" min-h-[calc(20%-50px)] sm:min-h-[calc(20%-50px)]">
+                                        <div class="relative space-y-4">
+                                            <div class="space-y-4" data-projection-id="82"
+                                                style="opacity: 1; transform: none; transition: 20s linear;">
+                                                <div class="flex justify-end bg-primary py-1">
+                                                    <div class=" space-y-1  break-words">
+                                                        <div class="rounded-[10px] bg-cream-600 p-3 ml-auto w-fit">
+                                                            werty</div>
+                                                    </div>
+                                                </div>
+                                                <div class="py-1">
+                                                    <div class=" mb-4 last:mb-0 ">Hahaha, what's
+                                                        next, a string of random numbers? 😜 You've gone full-on
+                                                        nonsense mode again! 😝 Or is it some sort of secret
+                                                        code?
+                                                        😄 Maybe you're trying to hack my AI circuits! 😆
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><br />
+
+                                    <div class=" min-h-[calc(20%-50px)] sm:min-h-[calc(20%-50px)]">
+                                        <div class="relative space-y-4">
+                                            <div class="space-y-4" data-projection-id="82"
+                                                style="opacity: 1; transform: none; transition: 20s linear;">
+                                                <div class="flex justify-end bg-primary py-1">
+                                                    <div class=" space-y-1  break-words">
+                                                        <div class="rounded-[10px] bg-cream-600 p-3 ml-auto w-fit">
+                                                            werty</div>
+                                                    </div>
+                                                </div>
+                                                <div class="py-1">
+                                                    <div class=" mb-4 last:mb-0 ">Hahaha, what's
+                                                        next, a string of random numbers? 😜 You've gone full-on
+                                                        nonsense mode again! 😝 Or is it some sort of secret
+                                                        code?
+                                                        😄 Maybe you're trying to hack my AI circuits! 😆
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <br />
+                                <div  id="scrollTarget"
+                                    class=" pb-6 lg:pb-8 min-h-[calc(100%-60px)] sm:min-h-[calc(100%-300px)] main-page">
+                                    <div  class="relative space-y-4"><br />
+                                        <div class="space-y-4" data-projection-id="82"
+                                            >
+                                            <!-- User Message Container -->
+                                            <div id="display-area">
+
+                                                <div
+                                                    class="flex  user-message justify-end py-1 mt-10 space-y-1 break-words rounded-[10px] bg-cream-600 p-3 ml-auto w-fit mb-3">
+                                                    Hi
+                                                </div>
+                                                <div
+                                                    class="py-1 mb-4 last:mb-0 other-message sentence defaultFadeInElement">
+                                                    <div class="default">
+                                                        <dspan>Hahaha! 😆 Now you're just being</dspan>
+                                                        <dspan>silly. 😜 I know you're capable
+                                                            <dspan />
+                                                            <dspan>of more than just hi! 😝
+                                                                <dspan />
+                                                                <dspan>Come on, let's chat about something</dspan>
+                                                                <dspan>a bit more substantial! 😄 I</dspan>
+                                                                <dspan>promise I'll be an excellent
+                                                                    conversationalist!</dspan>
+                                                                <dspan>😁</dspan>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                          </div>
-                          <div class="py-1">
-                            <div class=" mb-4 last:mb-0"><span>Hahaha, what's
-                                next, a string of random numbers? 😜 You've gone full-on
-                                nonsense mode again! 😝 Or is it some sort of secret
-                                code?
-                                😄 Maybe you're trying to hack my AI circuits! 😆</span>
-                            </div>
-                          </div>
                         </div>
-                      </div>
                     </div>
-
-                    <div class="pb-6 lg:pb-8 min-h-[calc(100%-60px)] sm:min-h-[calc(100%-120px)]">
-                      <div class="relative space-y-4">
-                        <div class="space-y-4" data-projection-id="82"
-                          style="opacity: 1; transform: none; transition: 20s linear;">
-                          <div class="flex justify-end bg-primary py-1">
-                            <div class=" space-y-1  break-words">
-                              <div class="rounded-[10px] bg-cream-600 p-3 ml-auto w-fit">
-                                werty</div>
+                    <div class="w-full mx-auto max-w-1.5xl 2xl:max-w-[47rem]"></div>
+                    <div class="max-h-[40%] px-5 sm:px-0 z-15 w-full mx-auto max-w-1.5xl 2xl:max-w-[47rem]">
+                        <div class="flex items-center">
+                            <div class="grow">
+                                <div
+                                    class="relative flex h-full cursor-text items-end border border-transparent bg-cream-200 shadow-input transition-all duration-300 focus-within:border-cream-650 focus-within:shadow-none hover:border-cream-650 hover:shadow-none rounded-[30px]">
+                                    <div class=" grow overflow-y-auto py-3 pr-4 lg:py-2.5 pl-[1.185rem]">
+                                        <textarea
+                                            class="block w-full resize-none overflow-y-hidden whitespace-pre-wrap bg-transparent outline-none placeholder:text-brand-gray-400"
+                                            spellcheck="false" placeholder="Talk with Ludci" enterkeyhint="enter"
+                                            style="height: 26px !important;" id="input-text"></textarea>
+                                    </div>
+                                    <button id="sendButton" onclick="displayText()"
+                                        class="relative m-2 grid h-9 w-9 place-items-center rounded-full transition-colors duration-300"
+                                        style="backgroundColor: #F5EEDF;"
+                                        onmouseover="this.style.backgroundColor='#418A2F'"
+                                        onmouseout="this.style.backgroundColor='#F5EEDF'" type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="16"
+                                            fill="#ffffff" class="transition-colors duration-300">
+                                            <path fill-rule="evenodd"
+                                                d="M.852 7.648a1.2 1.2 0 0 1 0-1.696l4.8-4.8a1.2 1.2 0 0 1 1.696 0l4.8 4.8a1.2 1.2 0 1 1-1.697 1.696L7.7 4.897V14a1.2 1.2 0 0 1-2.4 0V4.897L2.548 7.648a1.2 1.2 0 0 1-1.696 0Z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
-                          </div>
-                          <div class="py-1">
-                            <div class=" mb-4 last:mb-0 "><span>Hahaha, what's
-                                next, a string of random numbers? 😜 You've gone full-on
-                                nonsense mode again! 😝 Or is it some sort of secret
-                                code?
-                                😄 Maybe you're trying to hack my AI circuits! 😆</span>
-                            </div>
-                          </div>
                         </div>
-                      </div>
                     </div>
-
-                  </div>
-                  <div id="scrollTarget"
-                    class="pb-6 lg:pb-8 min-h-[calc(100%-60px)] sm:min-h-[calc(100%-120px)] main-page">
-                    <div class="relative space-y-4">
-                      <div class="space-y-4" data-projection-id="82"
-                        style="opacity: 1; transform: none; transition: 20s linear;">
-                        <!-- User Message Container -->
-                        <div id="display-area">
-                          <div
-                            class="flex fade-up-text user-message justify-end py-1 space-y-1 break-words rounded-[10px] bg-cream-600 p-3 ml-auto w-fit mb-3">
-                            Hi
-                          </div>
-                          <div class="py-1 mb-4 last:mb-0 other-message sentence">
-                            <div class="default">
-                              <dspan>Hahaha! 😆 Now you're just being</dspan>
-                              <dspan>silly. 😜 I know you're capable
-                                <dspan />
-                                <dspan>of more than just hi! 😝
-                                  <dspan />
-                                  <dspan>Come on, let's chat about something</dspan>
-                                  <dspan>a bit more substantial! 😄 I</dspan>
-                                  <dspan>promise I'll be an excellent
-                                    conversationalist!</dspan>
-                                  <dspan>😁</dspan>
-                            </div>
-
-                          </div>
+                    <div class="py-6 px-5 w-full mx-auto max-w-1.5xl 2xl:max-w-[47rem]">
+                        <div data-projection-id="4" style="opacity: 1;">
+                            <div class="mx-auto text-center font-sans text-xs font-normal text-brand-gray-400">This
+                                early version of Ludci can make mistakes. Please don’t rely
+                                on&nbsp;its&nbsp;information.</div>
                         </div>
-
-                      </div>
                     </div>
-                  </div>
-
+                </div><audio></audio>
+                <div class="fixed right-6 font-sans text-xl lg:right-12 lg:text-2xl top-4 lg:top-8 z-60">
+                    <div class="relative flex flex-col-reverse">
+                        <div class="flex flex-col p-1 text-sm text-gray-500 lg:text-lg"
+                            style="opacity: 0; visibility: hidden;">
+                            <button type="button" disabled=""
+                                class="mb-1 rounded-full px-2 py-3 text-center bg-cream-650 text-dark-green-500">Pi
+                                1</button><button type="button"
+                                class="mb-1 rounded-full px-2 py-3 text-center hover:bg-cream-600">Pi
+                                2</button><button type="button"
+                                class="mb-1 rounded-full px-2 py-3 text-center hover:bg-cream-600">Pi
+                                3</button><button type="button"
+                                class="mb-1 rounded-full px-2 py-3 text-center hover:bg-cream-600">Pi
+                                4</button><button type="button"
+                                class="mb-1 rounded-full px-2 py-3 text-center hover:bg-cream-600">Pi
+                                5</button><button type="button"
+                                class="mb-1 rounded-full px-2 py-3 text-center hover:bg-cream-600">Pi
+                                6</button>
+                        </div>
+                        <div class="relative flex items-center justify-end self-end p-2">
+                            <div class="absolute inset-0 -z-10 bg-cream-550"
+                                style="border-radius: 9999px; opacity: 1;"></div>
+                            <button class="group z-10 flex items-center text-brand-gray-500" type="button">
+                                <div><svg stroke="currentColor" fill="currentColor" stroke-width="0"
+                                        viewBox="0 0 24 24" aria-hidden="true" class="group-hover:opacity-40"
+                                        height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 001.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06zM17.78 9.22a.75.75 0 10-1.06 1.06L18.44 12l-1.72 1.72a.75.75 0 001.06 1.06l1.72-1.72 1.72 1.72a.75.75 0 101.06-1.06L20.56 12l1.72-1.72a.75.75 0 00-1.06-1.06l-1.72 1.72-1.72-1.72z">
+                                        </path>
+                                    </svg></div>
+                                <div class="overflow-visible whitespace-nowrap text-xs"
+                                    style="opacity: 0; width: 0px;">
+                                    <div class="absolute pl-4 invisible">Voice on</div>
+                                    <div class="pl-4 visible">Voice off</div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div class="w-full mx-auto max-w-1.5xl 2xl:max-w-[47rem]"></div>
-            <div class="max-h-[40%] px-5 sm:px-0 z-15 w-full mx-auto max-w-1.5xl 2xl:max-w-[47rem]">
-              <div class="flex h-full items-center">
-                <div class="h-full grow">
-                  <div
-                    class="relative flex h-full cursor-text items-end border border-transparent bg-cream-200 shadow-input transition-all duration-300 focus-within:border-cream-650 focus-within:shadow-none hover:border-cream-650 hover:shadow-none rounded-[30px]">
-                    <div class="h-full grow overflow-y-auto py-3 pr-4 lg:py-2.5 pl-[1.185rem]">
-                      <textarea
-                        class="block w-full resize-none overflow-y-hidden whitespace-pre-wrap bg-transparent outline-none placeholder:text-brand-gray-400"
-                        spellcheck="false" placeholder="Talk with Pi" enterkeyhint="enter"
-                        style="height: 32px !important;" id="input-text"></textarea>
-                    </div>
-                    <button id="sendButton" onclick="displayText()"
-                      class="relative m-2 grid h-9 w-9 place-items-center rounded-full transition-colors duration-300"
-                      style="backgroundColor: #F5EEDF;" onmouseover="this.style.backgroundColor='#418A2F'"
-                      onmouseout="this.style.backgroundColor='#F5EEDF'" type="button">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="16" fill="#ffffff"
-                        class="transition-colors duration-300">
-                        <path fill-rule="evenodd"
-                          d="M.852 7.648a1.2 1.2 0 0 1 0-1.696l4.8-4.8a1.2 1.2 0 0 1 1.696 0l4.8 4.8a1.2 1.2 0 1 1-1.697 1.696L7.7 4.897V14a1.2 1.2 0 0 1-2.4 0V4.897L2.548 7.648a1.2 1.2 0 0 1-1.696 0Z"
-                          clip-rule="evenodd"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="py-6 px-5 w-full mx-auto max-w-1.5xl 2xl:max-w-[47rem]">
-              <div data-projection-id="4" style="opacity: 1;">
-                <div class="mx-auto text-center font-sans text-xs font-normal text-brand-gray-400">This
-                  early version of Pi can make mistakes. Please don’t rely
-                  on&nbsp;its&nbsp;information.</div>
-              </div>
-            </div>
-          </div><audio></audio>
-          <div class="fixed right-6 font-sans text-xl lg:right-12 lg:text-2xl top-4 lg:top-8 z-60">
-            <div class="relative flex flex-col-reverse">
-              <div class="flex flex-col p-1 text-sm text-gray-500 lg:text-lg" style="opacity: 0; visibility: hidden;">
-                <button type="button" disabled=""
-                  class="mb-1 rounded-full px-2 py-3 text-center bg-cream-650 text-dark-green-500">Pi
-                  1</button><button type="button" class="mb-1 rounded-full px-2 py-3 text-center hover:bg-cream-600">Pi
-                  2</button><button type="button" class="mb-1 rounded-full px-2 py-3 text-center hover:bg-cream-600">Pi
-                  3</button><button type="button" class="mb-1 rounded-full px-2 py-3 text-center hover:bg-cream-600">Pi
-                  4</button><button type="button" class="mb-1 rounded-full px-2 py-3 text-center hover:bg-cream-600">Pi
-                  5</button><button type="button" class="mb-1 rounded-full px-2 py-3 text-center hover:bg-cream-600">Pi
-                  6</button>
-              </div>
-              <div class="relative flex items-center justify-end self-end p-2">
-                <div class="absolute inset-0 -z-10 bg-cream-550" style="border-radius: 9999px; opacity: 1;"></div>
-                <button class="group z-10 flex items-center text-brand-gray-500" type="button">
-                  <div><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                      aria-hidden="true" class="group-hover:opacity-40" height="1em" width="1em"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 001.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06zM17.78 9.22a.75.75 0 10-1.06 1.06L18.44 12l-1.72 1.72a.75.75 0 001.06 1.06l1.72-1.72 1.72 1.72a.75.75 0 101.06-1.06L20.56 12l1.72-1.72a.75.75 0 00-1.06-1.06l-1.72 1.72-1.72-1.72z">
-                      </path>
-                    </svg></div>
-                  <div class="overflow-visible whitespace-nowrap text-xs" style="opacity: 0; width: 0px;">
-                    <div class="absolute pl-4 invisible">Voice on</div>
-                    <div class="pl-4 visible">Voice off</div>
-                  </div>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="fixed top-4 left-6 lg:top-8 lg:left-12 z-90"><button id="sendButton"
-              class="relative rounded-full bg-cream-550 p-1.5 hover:bg-cream-650" type="button"><svg width="24"
-                height="24" xmlns="http://www.w3.org/2000/svg" class="-scale-x-100 fill-brand-gray-500">
-                <rect x="20.6105" y="15.8746" width="11.22" height="2.58239" rx="1.2912"
-                  transform="rotate(-180 20.6105 15.8746)"></rect>
-                <rect x="3.3922" y="8" width="17.216" height="2.58239" rx="1.2912"></rect>
-              </svg></button></div><button
-            class="fixed bottom-16 left-6 -z-20 rounded-full bg-cream-550 p-2 text-left text-xl text-brand-gray-500 enabled:hover:bg-cream-650 sm:bottom-4 lg:bottom-8 lg:left-12 z-60 hidden sm:block"
-            type="button" style="opacity: 1; visibility: visible;"><svg stroke="currentColor" fill="currentColor"
-              stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
-              </path>
-            </svg></button>
+                <div class="fixed top-4 left-6 lg:top-8 lg:left-12 z-90"><button id="sendButton"
+                        class="relative rounded-full bg-cream-550 p-1.5 hover:bg-cream-650" type="button"><svg
+                            width="24" height="24" xmlns="http://www.w3.org/2000/svg"
+                            class="-scale-x-100 fill-brand-gray-500">
+                            <rect x="20.6105" y="15.8746" width="11.22" height="2.58239" rx="1.2912"
+                                transform="rotate(-180 20.6105 15.8746)"></rect>
+                            <rect x="3.3922" y="8" width="17.216" height="2.58239" rx="1.2912"></rect>
+                        </svg></button></div><button
+                    class="fixed bottom-16 left-6 -z-20 rounded-full bg-cream-550 p-2 text-left text-xl text-brand-gray-500 enabled:hover:bg-cream-650 sm:bottom-4 lg:bottom-8 lg:left-12 z-60 hidden sm:block"
+                    type="button" style="opacity: 1; visibility: visible;"><svg stroke="currentColor"
+                        fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em"
+                        width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                        </path>
+                    </svg></button>
 
-          <div class="fixed z-100"></div>
+                <div class="fixed z-100"></div>
+            
+            </div>
+
+
         </div>
-
-
-      </div>
     </main>
-  </div>
-
+</div>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
